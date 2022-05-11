@@ -1,13 +1,15 @@
-import express from "express";
-import dotenv from "dotenv";
-import cors from "cors";
-import router from "./routes/questionRoutes.mjs";
-import { errorHandler } from "./middleware/errorMiddleware.mjs";
+const express = require("express");
+const dotenv = require("dotenv").config();
+const colors = require("colors");
+const connectDB = require("./config/db");
+const router = require("./routes/questionRoutes.js");
+const { errorHandler } = require("./middleware/errorMiddleware.js");
 
 //App variables
 const app = express();
-const env = dotenv.config();
 const PORT = process.env.PORT || 5000;
+
+connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

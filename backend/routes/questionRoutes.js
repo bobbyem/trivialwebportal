@@ -1,11 +1,11 @@
-import express from "express";
-import {
+const express = require("express");
+const router = express.Router();
+const {
   deleteQuestion,
   getQuestions,
   setQuestion,
   updateQuestion,
-} from "../controllers/questionController.mjs";
-const router = express.Router();
+} = require("../controllers/questionController.js");
 
 router.get("/", getQuestions);
 
@@ -15,4 +15,4 @@ router.put("/:id", updateQuestion);
 
 router.delete("/:id", deleteQuestion);
 
-export default router;
+module.exports = router;
