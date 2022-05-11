@@ -2,7 +2,6 @@ const express = require("express");
 const dotenv = require("dotenv").config();
 const colors = require("colors");
 const connectDB = require("./config/db");
-const router = require("./routes/questionRoutes.js");
 const { errorHandler } = require("./middleware/errorMiddleware.js");
 
 //App variables
@@ -13,7 +12,8 @@ connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use("/api/questions", router);
+app.use("/api/questions", require("./routes/questionRoutes.js"));
+app.use("/api/users", require("./routes/userRoutes.js"));
 app.use(errorHandler);
 
 //Listen to PORT
