@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
+const { stringify } = require("nodemon/lib/utils");
 
 questionSchema = mongoose.Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "User",
-    },
     category: String,
     question: String,
     answer: String,
-    alternatives: [String],
     source: String,
+    author: {
+      id: String,
+      name: String,
+      email: String,
+    },
+    showAuthor: Boolean,
     vetted: Boolean,
   },
   { timestamps: true }

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { createQuestion } from "../features/questions/questionSlice";
 
 function QuestionForm(props) {
   const dispatch = useDispatch();
@@ -9,6 +10,7 @@ function QuestionForm(props) {
   const [questionText, setQuestionText] = useState("");
   const [answerText, setAnswerText] = useState("");
   const [sourceText, setSourceText] = useState("");
+  const [category, setCategory] = useState("html");
   const author = {
     id: user._id,
     name: user.name,
@@ -29,25 +31,55 @@ function QuestionForm(props) {
     } else if (!sourceText || sourceText.length < 1) {
       return alert("You must put in a valid source link 🙄");
     }
-    // dispatch(
-    //   createQuestion({
-    //     question: questionText,
-    //     answer: answerText,
-    //     source: sourceText,
-    //     author: author,
-    //     showAuthor: showAuthor,
-    // vetted: false,
-    //   })
-    // );
-    toast.done("Question Submited Successfully");
-    console.log(questionText, answerText, sourceText, author, showAuthor);
+    dispatch(
+      createQuestion({
+        category: category,
+        question: questionText,
+        answer: answerText,
+        source: sourceText,
+        author: author,
+        showAuthor: showAuthor,
+        vetted: false,
+      })
+    );
+    toast("Question Submited Successfully");
+    console.log(
+      questionText,
+      answerText,
+      sourceText,
+      author,
+      showAuthor,
+      category
+    );
     //Clear the inputs
-    setAnswerText("");
+    // setQuestionText("");
+    // setAnswerText("");
+    // setSourceText("");
+    // setShowAuthor(false);
   }
 
   return (
     <section className="form">
       <form onSubmit={onSubmit}>
+        <div className="form-group">
+          <label htmlFor="category">Category</label>
+          <select
+            type="select"
+            name="category"
+            id="qText"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="html" selected>
+              HTML
+            </option>
+            <option value="javascript">Javascript</option>
+            <option value="css">CSS</option>
+            <option value="framework">Framework</option>
+            <option value="backend">Backend</option>
+            <option value="history">History</option>
+          </select>
+        </div>
         <div className="form-group">
           <label htmlFor="qText">Question</label>
           <input

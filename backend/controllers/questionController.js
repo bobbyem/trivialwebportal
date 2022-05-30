@@ -23,8 +23,10 @@ const setQuestion = asyncHandler(async (req, res) => {
     category: req.body.category,
     question: req.body.question,
     answer: req.body.answer,
-    alternatives: req.body.alternatives,
     source: req.body.source,
+    author: req.body.author,
+    showAuthor: req.body.showAuthor,
+    vetted: req.body.vetted,
   });
   res.status(200).json(question);
 });
