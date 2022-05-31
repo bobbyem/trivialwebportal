@@ -14,8 +14,6 @@ function Dashboard() {
     (state) => state.questions
   );
 
-  console.log(questions);
-
   useEffect(() => {
     if (isError) {
       console.log(message);
@@ -23,7 +21,9 @@ function Dashboard() {
     if (!user) {
       navigate("/login");
     }
-    dispatch(getQuestions());
+    if (user && user.admin) {
+      dispatch(getQuestions());
+    }
 
     return () => {
       dispatch(reset());

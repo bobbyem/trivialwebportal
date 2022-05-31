@@ -51,11 +51,11 @@ function QuestionForm(props) {
       showAuthor,
       category
     );
-    //Clear the inputs
-    // setQuestionText("");
-    // setAnswerText("");
-    // setSourceText("");
-    // setShowAuthor(false);
+    // Clear the inputs
+    setQuestionText("");
+    setAnswerText("");
+    setSourceText("");
+    setShowAuthor(false);
   }
 
   return (
@@ -70,9 +70,7 @@ function QuestionForm(props) {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="html" selected>
-              HTML
-            </option>
+            <option value="html">HTML</option>
             <option value="javascript">Javascript</option>
             <option value="css">CSS</option>
             <option value="framework">Framework</option>

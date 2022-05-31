@@ -9,7 +9,15 @@ function QuestionItem({ question }) {
       <div className="">
         {new Date(question.createdAt).toLocaleString("en-US")}
       </div>
-      <h2>{question.question}</h2>
+      <h3>{question.category.toUpperCase()}</h3>
+      <h2>Q: {question.question}</h2>
+      <h2>A: {question.answer}</h2>
+      <a href={question.source} target="blank">
+        Source LINK
+      </a>
+      <p>{question.vetted ? "Vetted 👍" : "Not yet vetted 👎"}</p>
+      <p>Author: {question.author.name}</p>
+      <p>{question.showAuthor ? "Wants credit" : "Doesn't want credit"}</p>
       <button
         className="close"
         onClick={() => {
