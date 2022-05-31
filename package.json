@@ -1,7 +1,7 @@
 {
   "name": "trivial-web-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "API and Webportal for Trivial-Web",
   "main": "index.js",
   "scripts": {
     "start": "node backend/server.js",
