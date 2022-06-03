@@ -5,7 +5,7 @@ import { deleteQuestion } from "../features/questions/questionSlice";
 function QuestionItem({ question }) {
   const dispatch = useDispatch();
   return (
-    <div className="goal">
+    <div className="question">
       <div className="">
         {new Date(question.createdAt).toLocaleString("en-US")}
       </div>

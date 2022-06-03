@@ -1,4 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+/* CSS HEX */
+/* --paradise-pink: #ef476fff;
+--orange-yellow-crayola: #ffd166ff;
+--caribbean-green: #06d6a0ff;
+--blue-ncs: #118ab2ff;
+--midnight-green-eagle-green: #073b4cff; */
 
 * {
   margin: 0;
@@ -7,8 +15,9 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
   height: 100vh;
+  background-color: #ffd166ff;
 }
 
 a {
@@ -92,8 +101,8 @@ h3 {
   gap: 10px;
 }
 
-.goal {
-  background-color: #f4f4f4;
+.question {
+  background-color: #ffffff;
   margin: 10px 0;
   padding: 20px 0 10px;
   position: relative;
@@ -137,9 +146,9 @@ h3 {
 
 .btn {
   padding: 10px 20px;
-  border: 1px solid #000;
+  border: 1px solid #118ab2ff;
   border-radius: 5px;
-  background: #000;
+  background: #118ab2ff;
   color: #fff;
   font-size: 16px;
   font-weight: 700;

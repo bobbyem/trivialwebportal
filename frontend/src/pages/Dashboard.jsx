@@ -37,6 +37,8 @@ function Dashboard() {
       <section>
         <h1>Wellcome {user && user.name}</h1>
       </section>
+      <h4>Thank you for contributing to this project!😍</h4>
+      <p>So far we have: {questions.length} questions</p>
       {user ? <QuestionForm user={user} /> : null}
       {questions ? (
         <section className="content">
