@@ -34,7 +34,7 @@ function Dashboard() {
   }
   return (
     <>
-      <section>
+      <section className="fade-in">
         <h1>Wellcome {user && user.name}</h1>
       </section>
       <h4>Thank you for contributing to this project!😍</h4>

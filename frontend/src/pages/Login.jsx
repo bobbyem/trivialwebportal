@@ -54,7 +54,7 @@ function Login() {
 
   return (
     <>
-      <section className="heading">
+      <section className="heading fade-in">
         <h1>
           <FaSignInAlt />
         </h1>

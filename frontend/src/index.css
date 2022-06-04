@@ -184,7 +184,7 @@ h3 {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(239, 71, 110, 0.399);
   z-index: 5000;
   display: flex;
   justify-content: center;
@@ -198,6 +198,12 @@ h3 {
   border-color: #000 transparent #555 transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
+}
+
+.fade-in {
+  animation: fade;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes spin {
@@ -220,5 +226,14 @@ h3 {
 
   .heading p {
     font-size: 1.5rem;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

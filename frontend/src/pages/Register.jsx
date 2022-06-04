@@ -60,7 +60,7 @@ function Register() {
 
   return (
     <>
-      <section className="heading">
+      <section className="heading fade-in">
         <h1>
           <FaUser />
         </h1>
