@@ -25,8 +25,6 @@ function EmailForm() {
     }
   }, [cats]);
 
-  console.log(process.env.EMAIL_KEY);
-
   //Handle the submit
   function onSubmit(e) {
     e.preventDefault();
@@ -61,18 +59,14 @@ function EmailForm() {
         "service_6q7cfbs",
         "template_apd1nkp",
         templateParams,
-        process.env.EMAIL_KEY
+        process.env.REACT_APP_EMAIL_KEY
       )
       .then(
         (result) => {
           toast(result.text);
           if (result.status === 200) {
-            setName(
-              "Thanks for the message, I will get back to you as soon as I can 😍"
-            );
-            setEmail(
-              "Thanks for the message, I will get back to you as soon as I can 😍"
-            );
+            setName("");
+            setEmail("");
             setMessage(
               "Thanks for the message, I will get back to you as soon as I can 😍"
             );
