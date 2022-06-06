@@ -184,7 +184,7 @@ h3 {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(239, 71, 110, 0.399);
+  background-color: rgba(17, 138, 178, 0.749);
   z-index: 5000;
   display: flex;
   justify-content: center;
@@ -198,6 +198,10 @@ h3 {
   border-color: #000 transparent #555 transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
+}
+
+.question-edit {
+  background-color: white;
 }
 
 .fade-in {

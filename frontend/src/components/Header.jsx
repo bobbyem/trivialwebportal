@@ -1,4 +1,10 @@
-import { FaAt, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import {
+  FaAt,
+  FaEdit,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaUser,
+} from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout, reset } from "../features/auth/authSlice";
@@ -25,6 +31,13 @@ function Header() {
             <FaAt /> Contact
           </Link>
         </li>
+        {user.admin ? (
+          <li>
+            <Link to="/questions">
+              <FaEdit /> Edit Questions
+            </Link>
+          </li>
+        ) : null}
         {user ? (
           <li>
             <button className="btn" onClick={onLogout}>

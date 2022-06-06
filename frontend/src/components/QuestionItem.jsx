@@ -1,9 +1,14 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { deleteQuestion } from "../features/questions/questionSlice";
+import React, { useState } from "react";
+import { FaEdit } from "react-icons/fa";
+import QuestionEdit from "./QuestionEdit";
 
 function QuestionItem({ question }) {
-  const dispatch = useDispatch();
+  const [editing, setEditing] = useState(false);
+
+  function hideEdit() {
+    setEditing(false);
+  }
+
   return (
     <div className="question">
       <div className="">
@@ -18,14 +23,16 @@ function QuestionItem({ question }) {
       <p>{question.vetted ? "Vetted 👍" : "Not yet vetted 👎"}</p>
       <p>Author: {question.author.name}</p>
       <p>{question.showAuthor ? "Wants credit" : "Doesn't want credit"}</p>
-      <button
-        className="close"
+      <div
         onClick={() => {
-          dispatch(deleteQuestion(question._id));
+          setEditing(true);
         }}
       >
-        X
-      </button>
+        <FaEdit />
+      </div>
+      {editing ? (
+        <QuestionEdit question={question} hideEdit={hideEdit} />
+      ) : null}
     </div>
   );
 }

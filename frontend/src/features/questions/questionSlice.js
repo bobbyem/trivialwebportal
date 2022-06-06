@@ -6,6 +6,7 @@ const initialState = {
   isSuccess: false,
   isLoading: false,
   message: "",
+  editing: false,
 };
 
 //Create new Question
@@ -70,6 +71,9 @@ export const questionSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
+    setEditing: (state, action) => {
+      state.editing = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -117,5 +121,5 @@ export const questionSlice = createSlice({
   },
 });
 
-export const { reset } = questionSlice.actions;
+export const { reset, setEditing } = questionSlice.actions;
 export default questionSlice.reducer;
