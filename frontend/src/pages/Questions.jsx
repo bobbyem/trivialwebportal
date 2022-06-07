@@ -3,11 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import QuestionItem from "../components/QuestionItem";
 import Spinner from "../components/Spinner";
-import {
-  getQuestions,
-  reset,
-  setEditing,
-} from "../features/questions/questionSlice";
+import { toast } from "react-toastify";
+import { getQuestions, reset } from "../features/questions/questionSlice";
 
 function Questions() {
   const dispatch = useDispatch();
@@ -26,10 +23,14 @@ function Questions() {
     if (user && user.admin) {
       dispatch(getQuestions());
     }
+    //Check if error
+    if (isError || message) {
+      toast(message);
+    }
     return () => {
       dispatch(reset());
     };
-  }, [user, navigate, dispatch]);
+  }, [user, navigate, dispatch, isError, message]);
 
   if (isLoading) {
     return <Spinner />;
@@ -40,7 +41,7 @@ function Questions() {
       {questions ? (
         <section className="content">
           {questions.length > 0 ? (
-            <div className="goals">
+            <div className="questions">
               {questions.map((question) => (
                 <QuestionItem key={question._id} question={question} />
               ))}

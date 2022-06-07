@@ -28,7 +28,7 @@ function QuestionItem({ question }) {
           setEditing(true);
         }}
       >
-        <FaEdit />
+        <FaEdit className="btn-fa" />
       </div>
       {editing ? (
         <QuestionEdit question={question} hideEdit={hideEdit} />
