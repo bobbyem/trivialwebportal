@@ -47,6 +47,25 @@ export const getQuestions = createAsyncThunk(
   }
 );
 
+//update Question
+export const updateQuestion = createAsyncThunk(
+  "questions/update",
+  async (updateData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await questionService.updateQuestion(updateData, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 //Delete Question
 export const deleteQuestion = createAsyncThunk(
   "questions/delete",
@@ -71,9 +90,6 @@ export const questionSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
-    setEditing: (state, action) => {
-      state.editing = action.payload;
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -103,6 +119,18 @@ export const questionSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
+      .addCase(updateQuestion.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateQuestion.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(updateQuestion.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
       .addCase(deleteQuestion.pending, (state) => {
         state.isLoading = true;
       })
@@ -121,5 +149,5 @@ export const questionSlice = createSlice({
   },
 });
 
-export const { reset, setEditing } = questionSlice.actions;
+export const { reset } = questionSlice.actions;
 export default questionSlice.reducer;

@@ -31,7 +31,7 @@ function Header() {
             <FaAt /> Contact
           </Link>
         </li>
-        {user.admin ? (
+        {user && user.admin ? (
           <li>
             <Link to="/questions">
               <FaEdit /> Edit Questions

@@ -42,6 +42,8 @@ const updateQuestion = asyncHandler(async (req, res) => {
     throw new Error("Question not found");
   }
 
+  console.log("Updating question: " + question);
+
   const updatedQuestion = await Question.findByIdAndUpdate(
     req.params.id,
     req.body,

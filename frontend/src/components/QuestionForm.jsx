@@ -109,7 +109,7 @@ function QuestionForm(props) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="source">
+          <label htmlFor="showAuth">
             Show Author - (The question will be credited to you)
           </label>
           <input

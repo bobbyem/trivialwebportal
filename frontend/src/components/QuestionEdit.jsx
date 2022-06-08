@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowLeft, FaCheck, FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { deleteQuestion } from "../features/questions/questionSlice";
+import {
+  deleteQuestion,
+  getQuestions,
+  updateQuestion,
+} from "../features/questions/questionSlice";
 
 function QuestionEdit(props) {
   const dispatch = useDispatch();
@@ -28,10 +32,6 @@ function QuestionEdit(props) {
     vetted,
   });
 
-  useEffect(() => {
-    console.log(updateData);
-  }, [updateData]);
-
   function handleUpdate() {
     let ask = window.confirm("Are you sure you want to update this question?");
     if (ask) {
@@ -39,14 +39,20 @@ function QuestionEdit(props) {
     }
   }
 
-  function update(data) {}
+  function update(data) {
+    dispatch(updateQuestion(data));
+    setTimeout(() => {
+      dispatch(getQuestions());
+      props.hideEdit();
+    }, 1000);
+  }
 
   function handleDelete() {
     let ask = window.confirm("Are you sure you want to delete this question?");
     if (ask) {
       dispatch(deleteQuestion(_id));
       //Hide the edit view
-      props.hide();
+      props.hideEdit();
     }
   }
   return (
@@ -55,7 +61,7 @@ function QuestionEdit(props) {
         <h1>Edit Question</h1>
         <p>{_id}</p>
         <p>Created at: {createdAt}</p>
-        {updatedAt !== createdAt ? <p>Created at: {createdAt}</p> : null}
+        {updatedAt !== createdAt ? <p>Updated at: {updatedAt}</p> : null}
         <p>Created by: {author.name}</p>
         <div className="form-group">
           <label htmlFor="category">Category</label>
@@ -100,6 +106,18 @@ function QuestionEdit(props) {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="answer">Source</label>
+          <input
+            type="url"
+            name="source"
+            id="source"
+            value={updateData.source}
+            onChange={(e) => {
+              setUpdateData({ ...updateData, source: e.target.value });
+            }}
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="credit">Show Author?(get credit)</label>
           <input
             type="checkbox"
@@ -126,17 +144,19 @@ function QuestionEdit(props) {
             }}
           />
         </div>
-        <button className="btn" onClick={handleUpdate}>
-          <FaCheck />
-          Update
-        </button>
-        <button className="btn" onClick={handleDelete}>
-          <FaTrash />
-          Delete
-        </button>
-        <button className="btn" onClick={props.hideEdit}>
-          <FaArrowLeft /> Cancel
-        </button>
+        <div className="btn-row">
+          <button className="btn" onClick={props.hideEdit}>
+            <FaArrowLeft /> Cancel
+          </button>
+          <button className="btn" onClick={handleDelete}>
+            <FaTrash />
+            Delete
+          </button>
+          <button className="btn" onClick={handleUpdate}>
+            <FaCheck />
+            Update
+          </button>
+        </div>
       </section>
     </div>
   );

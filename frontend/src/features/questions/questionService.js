@@ -26,6 +26,22 @@ const getQuestions = async (token) => {
   return response.data;
 };
 
+//Update questions
+const updateQuestion = async (updateData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.put(
+    API_URL + updateData._id,
+    updateData,
+    config
+  );
+
+  return response.data;
+};
+
 //Delete question
 const deleteQuestion = async (questionId, token) => {
   const config = {
@@ -38,6 +54,11 @@ const deleteQuestion = async (questionId, token) => {
   return response.data;
 };
 
-const questionService = { createQuestion, getQuestions, deleteQuestion };
+const questionService = {
+  createQuestion,
+  getQuestions,
+  updateQuestion,
+  deleteQuestion,
+};
 
 export default questionService;
