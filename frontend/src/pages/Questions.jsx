@@ -5,15 +5,15 @@ import QuestionItem from "../components/QuestionItem";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
 import { getQuestions, reset } from "../features/questions/questionSlice";
+import SearchFilter from "../components/SearchFilter";
 
 function Questions() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { questions, isLoading, isError, message } = useSelector(
+  const { questions, filtered, isLoading, isError, message } = useSelector(
     (state) => state.questions
   );
   const { user } = useSelector((state) => state.auth);
-
   useEffect(() => {
     //Check if loged in
     if (!user) {
@@ -35,14 +35,34 @@ function Questions() {
   if (isLoading) {
     return <Spinner />;
   }
-
+  if (filtered.length === 0 && questions) {
+    return (
+      <>
+        <SearchFilter />
+        {questions ? (
+          <section className="content">
+            {questions.length > 0 ? (
+              <div className="questions">
+                {questions.map((question) => (
+                  <QuestionItem key={question._id} question={question} />
+                ))}
+              </div>
+            ) : (
+              <h3>No questions found</h3>
+            )}
+          </section>
+        ) : null}
+      </>
+    );
+  }
   return (
     <>
-      {questions ? (
+      <SearchFilter />
+      {filtered ? (
         <section className="content">
-          {questions.length > 0 ? (
+          {filtered.length > 0 ? (
             <div className="questions">
-              {questions.map((question) => (
+              {filtered.map((question) => (
                 <QuestionItem key={question._id} question={question} />
               ))}
             </div>

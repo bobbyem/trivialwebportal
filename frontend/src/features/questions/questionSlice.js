@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import questionService from "./questionService";
 const initialState = {
   questions: [],
+  filtered: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -90,6 +91,9 @@ export const questionSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => initialState,
+    setFiltered: (state, action) => {
+      state.filtered = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -149,5 +153,5 @@ export const questionSlice = createSlice({
   },
 });
 
-export const { reset } = questionSlice.actions;
+export const { reset, setFiltered } = questionSlice.actions;
 export default questionSlice.reducer;
