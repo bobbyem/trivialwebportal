@@ -5,15 +5,18 @@ import { setFiltered } from "../features/questions/questionSlice";
 function SearchFilter() {
   const { questions } = useSelector((state) => state.questions);
   const [sorting, setSorting] = useState("oldest");
-  const [filter, setFilter] = useState({ vetted: false, category: "" });
+  const [filter, setFilter] = useState({ vetted: "", category: "" });
   const dispatch = useDispatch();
 
-  //Filter the current questions - add to state
+  //Filter the current questions - add to global state filtered
   useEffect(() => {
     let result = [];
     if (questions) {
+      if (filter.category === "") {
+        result = [...questions];
+      }
       //Filter by category
-      if (filter.category) {
+      else {
         result = questions.filter(
           (question) => question.category === filter.category
         );
@@ -24,26 +27,35 @@ function SearchFilter() {
       } else {
         result = result.sort((a, b) => a.createdAt < b.createdAt);
       }
+      //Sort by vetted
+      if (filter.vetted === "true") {
+        result = result.filter((question) => question.vetted === true);
+      } else if (filter.vetted === "false") {
+        result = result.filter((question) => question.vetted === false);
+      }
     }
-    if (result.length > 0) {
-      dispatch(setFiltered(result));
-    }
+    //Set result in global state
+    dispatch(setFiltered(result));
   }, [questions, sorting, filter]);
+
   return (
     <section className="search-filter">
       <h1>Filter Questions</h1>
       <section className="form">
         <div className="form-group">
           <label htmlFor="vetted">Vetted</label>
-          <input
-            type="checkbox"
+          <select
             name="vetted"
             id="vetted"
-            checked={filter.vetted}
+            value={filter.vetted}
             onChange={(e) => {
-              setFilter({ ...filter, vetted: e.checked });
+              setFilter({ ...filter, vetted: e.target.value });
             }}
-          />
+          >
+            <option value={""}>All</option>
+            <option value={true}>Vetted</option>
+            <option value={false}>Not Vetted</option>
+          </select>
         </div>
         <div className="form-group">
           <label htmlFor="category">Category</label>

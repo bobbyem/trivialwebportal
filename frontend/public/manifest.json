@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Trivial Web - Question Portal",
+  "name": "Trivial Web",
   "icons": [
     {
       "src": "favicon.ico",
