@@ -24,7 +24,7 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/dashboard">Trivial Web - Question Portal</Link>
+        <Link to="/dashboard">Trivial Roulette - Question Portal</Link>
       </div>
       <ul>
         <li>
