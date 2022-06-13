@@ -54,11 +54,27 @@ const deleteQuestion = async (questionId, token) => {
   return response.data;
 };
 
+//Get latest question
+const getLatest = async () => {
+  const response = await axios.get(API_URL + "/latest");
+
+  return response.data;
+};
+
+//Get stats
+const getStats = async () => {
+  const response = await axios.get(API_URL + "/stats");
+
+  return response.data;
+};
+
 const questionService = {
   createQuestion,
   getQuestions,
   updateQuestion,
   deleteQuestion,
+  getLatest,
+  getStats,
 };
 
 export default questionService;

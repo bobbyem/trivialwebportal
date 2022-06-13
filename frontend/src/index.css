@@ -1,6 +1,15 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"); */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
+:root {
+  --blue: #1982c4;
+  --pink: #ef476fff;
+  --orange: #ffca3a;
+  --purple: #6a4c93;
+  --green: #8ac926;
+  --yellow: #f8ff13;
+}
+
 /* CSS HEX */
 /* --paradise-pink: #ef476fff;
 --orange-yellow-crayola: #ffd166ff;
@@ -17,7 +26,8 @@
 body {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
-  background-color: #ffd166ff;
+  background: no-repeat fixed
+    linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, #1982c4, #ffca3a);
 }
 
 a {
@@ -111,6 +121,7 @@ h3 {
   margin: 10px 0;
   padding: 20px 0 10px;
   position: relative;
+  border-radius: 0.5rem;
 }
 
 .question a {
@@ -226,10 +237,79 @@ h3 {
   color: rgba(17, 138, 178, 0.749);
 }
 
+.wellcome {
+  background-color: white;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+}
+
+.wellcome h1 {
+  font-size: 3rem;
+}
+
+.wellcome img {
+  width: 200px;
+}
+
+.stats ul {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.stats li {
+  width: 100%;
+}
+
+.latest-hero {
+  justify-self: flex-end;
+  background-color: var(--blue);
+  color: white;
+}
+
 .fade-in {
   animation: fade;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+}
+
+.back-and-forth {
+  position: absolute;
+  animation: backAndForth 1s infinite alternate-reverse;
+}
+
+.spin {
+  animation: spin 10s infinite;
+  animation-delay: 1s;
+}
+
+.html {
+  background-color: var(--blue);
+  color: white;
+}
+
+.javascript {
+  background-color: var(--green);
+}
+
+.css {
+  background-color: var(--pink);
+}
+
+.framework {
+  background-color: var(--orange);
+}
+
+.backend {
+  background-color: var(--purple);
+  color: white;
+}
+
+.history {
+  background-color: var(--yellow);
 }
 
 @keyframes spin {
@@ -284,5 +364,29 @@ h3 {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes backAndForth {
+  from {
+    transform: translateX(-50px);
+  }
+  to {
+    transform: translateX(-20px);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(-360deg);
+  }
+  10% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }

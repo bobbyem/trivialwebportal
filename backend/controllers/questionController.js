@@ -68,9 +68,53 @@ const deleteQuestion = asyncHandler(async (req, res) => {
   res.status(200).json({ id: req.params.id });
 });
 
+// @desc Get latest question
+// @route GET /api/latest
+// @access Public
+const getLatest = asyncHandler(async (req, res) => {
+  let question = await Question.findOne().sort({ createdAt: -1 });
+  res.status(200).json(question);
+});
+
+// @desc Get top ranking
+// @route GET /api/top
+// @access Public
+const getRankings = asyncHandler(async (req, res) => {
+  const questions = await Question.find();
+  res.status(200).json(questions);
+});
+
+// @desc Get statistics
+// @route GET /api/stats
+// @access Public
+const getStats = asyncHandler(async (req, res) => {
+  const questions = await Question.find();
+  let stats = {
+    numQuestions: questions.length,
+    categories: {
+      html: questions.filter((question) => question.category === "html").length,
+      javascript: questions.filter(
+        (question) => question.category === "javascript"
+      ).length,
+      css: questions.filter((question) => question.category === "css").length,
+      framework: questions.filter(
+        (question) => question.category === "framework"
+      ).length,
+      backend: questions.filter((question) => question.category === "backend")
+        .length,
+      history: questions.filter((question) => question.category === "history")
+        .length,
+    },
+  };
+  res.status(200).json(stats);
+});
+
 module.exports = {
   getQuestions,
   setQuestion,
   updateQuestion,
   deleteQuestion,
+  getLatest,
+  getRankings,
+  getStats,
 };

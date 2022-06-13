@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Questions from "./pages/Questions";
 import Register from "./pages/Register";
+import { Wellcome } from "./pages/Wellcome";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <div className="container">
           <Header />
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<Wellcome />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/register" element={<Register />} />

@@ -14,7 +14,7 @@ function QuestionItem({ question }) {
       <div className="">
         {new Date(question.createdAt).toLocaleString("en-US")}
       </div>
-      <h3>{question.category.toUpperCase()}</h3>
+      <h3 className={question.category}>{question.category.toUpperCase()}</h3>
       <h2>Q: {question.question}</h2>
       <h2>A: {question.answer}</h2>
       <a href={question.source} target="blank">

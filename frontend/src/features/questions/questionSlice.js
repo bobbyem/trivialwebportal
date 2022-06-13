@@ -7,7 +7,8 @@ const initialState = {
   isSuccess: false,
   isLoading: false,
   message: "",
-  editing: false,
+  latest: null,
+  stats: null,
 };
 
 //Create new Question
@@ -86,6 +87,42 @@ export const deleteQuestion = createAsyncThunk(
   }
 );
 
+//Get Latest Question
+export const getLatest = createAsyncThunk(
+  "questions/getLatest",
+  async (_, thunkAPI) => {
+    try {
+      return await questionService.getLatest();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+//Get Stats
+export const getStats = createAsyncThunk(
+  "questions/getStats",
+  async (_, thunkAPI) => {
+    try {
+      return await questionService.getStats();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const questionSlice = createSlice({
   name: "question",
   initialState,
@@ -146,6 +183,32 @@ export const questionSlice = createSlice({
         );
       })
       .addCase(deleteQuestion.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getLatest.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getLatest.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.latest = action.payload;
+      })
+      .addCase(getLatest.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getStats.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getStats.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.stats = action.payload;
+      })
+      .addCase(getStats.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

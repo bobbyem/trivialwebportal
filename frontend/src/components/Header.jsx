@@ -8,6 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout, reset } from "../features/auth/authSlice";
+import Logo from "./Logo";
 
 function Header() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/">Trivial Web - Question Portal</Link>
+        <Link to="/dashboard">Trivial Web - Question Portal</Link>
       </div>
       <ul>
         <li>
