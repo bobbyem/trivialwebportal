@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { createQuestion } from "../features/questions/questionSlice";
+import Stats from "./Stats";
 
 function QuestionForm(props) {
   const dispatch = useDispatch();
@@ -59,72 +60,75 @@ function QuestionForm(props) {
   }
 
   return (
-    <section className="form">
-      <form onSubmit={onSubmit}>
-        <div className="form-group">
-          <label htmlFor="category">Category</label>
-          <select
-            type="select"
-            name="category"
-            id="qText"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="html">HTML</option>
-            <option value="javascript">Javascript</option>
-            <option value="css">CSS</option>
-            <option value="framework">Framework</option>
-            <option value="backend">Backend</option>
-            <option value="history">History</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="qText">Question</label>
-          <input
-            type="text"
-            name="qText"
-            id="qText"
-            value={questionText}
-            onChange={(e) => setQuestionText(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="text">Answer</label>
-          <input
-            type="text"
-            name="aText"
-            id="aText"
-            value={answerText}
-            onChange={(e) => setAnswerText(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="source">Source (http)</label>
-          <input
-            type="url"
-            name="sourceText"
-            id="sourceText"
-            value={sourceText}
-            onChange={(e) => setSourceText(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="showAuth">
-            Show Author - (The question will be credited to you)
-          </label>
-          <input
-            type="checkbox"
-            name="showAuth"
-            id="showAuth"
-            value={sourceText}
-            onChange={(e) => setShowAuthor(e.target.checked)}
-          />
-        </div>
-        <div className="form-group">
-          <button className="btn btn-block">Add Question</button>
-        </div>
-      </form>
-    </section>
+    <>
+      <Stats />
+      <section className="form">
+        <form onSubmit={onSubmit}>
+          <div className="form-group">
+            <label htmlFor="category">Category</label>
+            <select
+              type="select"
+              name="category"
+              id="qText"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="html">HTML</option>
+              <option value="javascript">Javascript</option>
+              <option value="css">CSS</option>
+              <option value="framework">Framework</option>
+              <option value="backend">Backend</option>
+              <option value="history">History</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="qText">Question</label>
+            <input
+              type="text"
+              name="qText"
+              id="qText"
+              value={questionText}
+              onChange={(e) => setQuestionText(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="text">Answer</label>
+            <input
+              type="text"
+              name="aText"
+              id="aText"
+              value={answerText}
+              onChange={(e) => setAnswerText(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="source">Source (http)</label>
+            <input
+              type="url"
+              name="sourceText"
+              id="sourceText"
+              value={sourceText}
+              onChange={(e) => setSourceText(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="showAuth">
+              Show Author - (The question will be credited to you)
+            </label>
+            <input
+              type="checkbox"
+              name="showAuth"
+              id="showAuth"
+              value={sourceText}
+              onChange={(e) => setShowAuthor(e.target.checked)}
+            />
+          </div>
+          <div className="form-group">
+            <button className="btn btn-block">Add Question</button>
+          </div>
+        </form>
+      </section>
+    </>
   );
 }
 

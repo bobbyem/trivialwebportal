@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getStats } from "../features/questions/questionSlice";
 
-function Stats({ stats }) {
-  const { categories, numQuestions } = stats;
+function Stats() {
+  const { stats } = useSelector((state) => state.questions);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!stats) {
+      dispatch(getStats());
+    }
+  }, [stats]);
+
+  //Function to calculate percentage
   function calculate(a, b) {
     return Math.round((b / a) * 100);
   }
@@ -10,22 +20,24 @@ function Stats({ stats }) {
       <div className="stats">
         <ul>
           <li className="html">
-            Html: {calculate(numQuestions, categories.html)}%
+            Html: {calculate(stats.numQuestions, stats.categories.html)}%
           </li>
           <li className="javascript">
-            Javascript: {calculate(numQuestions, categories.javascript)}%
+            Javascript:{" "}
+            {calculate(stats.numQuestions, stats.categories.javascript)}%
           </li>
           <li className="css">
-            CSS: {calculate(numQuestions, categories.css)}%
+            CSS: {calculate(stats.numQuestions, stats.categories.css)}%
           </li>
           <li className="framework">
-            Framework: {calculate(numQuestions, categories.framework)}%
+            Framework:{" "}
+            {calculate(stats.numQuestions, stats.categories.framework)}%
           </li>
           <li className="backend">
-            Backend: {calculate(numQuestions, categories.backend)}%
+            Backend: {calculate(stats.numQuestions, stats.categories.backend)}%
           </li>
           <li className="history">
-            History: {calculate(numQuestions, categories.history)}%
+            History: {calculate(stats.numQuestions, stats.categories.history)}%
           </li>
         </ul>
         <hr />

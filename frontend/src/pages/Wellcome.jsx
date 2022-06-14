@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LatestHero from "../components/LatestHero";
 import Logo from "../components/Logo";
 import Stats from "../components/Stats";
-import { getLatest, getStats } from "../features/questions/questionSlice";
+import { getLatest } from "../features/questions/questionSlice";
 export function Wellcome() {
   const { latest, stats } = useSelector((state) => state.questions);
   const dispatch = useDispatch();
@@ -12,14 +12,11 @@ export function Wellcome() {
     if (!latest) {
       dispatch(getLatest());
     }
-    if (!stats) {
-      dispatch(getStats());
-    }
-  }, [latest, stats]);
+  }, [latest]);
 
   return (
     <section className="fade-in wellcome">
-      {stats ? <Stats stats={stats} /> : null}
+      <Stats />}
       <section>
         <Logo />
         <h1>Wellcome!</h1>
