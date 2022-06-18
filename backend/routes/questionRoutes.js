@@ -9,6 +9,7 @@ const {
   getRankings,
   getLatest,
   getStats,
+  getVettedQuestions,
 } = require("../controllers/questionController.js");
 
 //Basic CRUD
@@ -27,6 +28,6 @@ router.get("/top", getRankings);
 
 router.get("/stats", getStats);
 
-router.get("/vetted", getVetted);
+router.get("/vetted", getVettedQuestions);
 
 module.exports = router;

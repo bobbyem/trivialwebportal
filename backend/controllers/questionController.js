@@ -112,7 +112,7 @@ const getStats = asyncHandler(async (req, res) => {
 // @desc Get vetted Qs
 // @route GET /api/questions/vetted
 // @access Public
-const getQuestions = asyncHandler(async (req, res) => {
+const getVettedQuestions = asyncHandler(async (req, res) => {
   const questions = await Question.find({ vetted: false });
   res.status(200).json(questions);
 });
@@ -125,4 +125,5 @@ module.exports = {
   getLatest,
   getRankings,
   getStats,
+  getVettedQuestions,
 };
