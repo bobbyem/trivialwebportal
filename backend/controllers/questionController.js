@@ -113,7 +113,7 @@ const getStats = asyncHandler(async (req, res) => {
 // @route GET /api/questions/vetted
 // @access Public
 const getVettedQuestions = asyncHandler(async (req, res) => {
-  if (!req.category) {
+  if (!req.params.category) {
     const questions = await Question.find({ vetted: true });
     return res.status(200).json(questions);
   }
