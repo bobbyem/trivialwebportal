@@ -12,7 +12,7 @@ const {
 } = require("../controllers/questionController.js");
 
 //Basic CRUD
-router.get("/", protect, getQuestions);
+router.get("/", getQuestions);
 
 router.post("/", protect, setQuestion);
 

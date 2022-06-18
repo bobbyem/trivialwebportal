@@ -23,14 +23,14 @@ function Stats() {
             Html: {calculate(stats.numQuestions, stats.categories.html)}%
           </li>
           <li className="javascript">
-            Javascript:{" "}
+            Javascript:
             {calculate(stats.numQuestions, stats.categories.javascript)}%
           </li>
           <li className="css">
             CSS: {calculate(stats.numQuestions, stats.categories.css)}%
           </li>
           <li className="framework">
-            Framework:{" "}
+            Framework:
             {calculate(stats.numQuestions, stats.categories.framework)}%
           </li>
           <li className="backend">

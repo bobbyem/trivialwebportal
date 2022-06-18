@@ -16,7 +16,7 @@ export function Wellcome() {
 
   return (
     <section className="fade-in wellcome">
-      <Stats />}
+      <Stats />
       <section>
         <Logo />
         <h1>Wellcome!</h1>
