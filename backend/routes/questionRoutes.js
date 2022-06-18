@@ -27,4 +27,6 @@ router.get("/top", getRankings);
 
 router.get("/stats", getStats);
 
+router.get("/vetted", getVetted);
+
 module.exports = router;

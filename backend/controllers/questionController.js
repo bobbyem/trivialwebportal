@@ -6,14 +6,8 @@ const Question = require("../models/questionModel");
 // @route GET /api/questions
 // @access Public
 const getQuestions = asyncHandler(async (req, res) => {
-  if (!req) {
-    const questions = await Question.find();
-    res.status(200).json(questions);
-  }
-  if (req.vetted) {
-    const questions = await Question.find({ vetted: false });
-    res.status(200).json(questions);
-  }
+  const questions = await Question.find();
+  res.status(200).json(questions);
 });
 
 // @desc Set Q
@@ -113,6 +107,14 @@ const getStats = asyncHandler(async (req, res) => {
     },
   };
   res.status(200).json(stats);
+});
+
+// @desc Get vetted Qs
+// @route GET /api/questions/vetted
+// @access Public
+const getQuestions = asyncHandler(async (req, res) => {
+  const questions = await Question.find({ vetted: false });
+  res.status(200).json(questions);
 });
 
 module.exports = {
