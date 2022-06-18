@@ -28,6 +28,6 @@ router.get("/top", getRankings);
 
 router.get("/stats", getStats);
 
-router.get("/vetted", getVettedQuestions);
+router.get("/vetted:category", getVettedQuestions);
 
 module.exports = router;

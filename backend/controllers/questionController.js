@@ -113,8 +113,15 @@ const getStats = asyncHandler(async (req, res) => {
 // @route GET /api/questions/vetted
 // @access Public
 const getVettedQuestions = asyncHandler(async (req, res) => {
-  const questions = await Question.find({ vetted: false });
-  res.status(200).json(questions);
+  if (!req.category) {
+    const questions = await Question.find({ vetted: true });
+    return res.status(200).json(questions);
+  }
+  const questions = await Question.find({
+    vetted: true,
+    category: req.params.category,
+  });
+  return res.status(200).json(questions);
 });
 
 module.exports = {
