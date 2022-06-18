@@ -109,18 +109,65 @@ const getStats = asyncHandler(async (req, res) => {
   res.status(200).json(stats);
 });
 
-// @desc Get vetted Qs
+// @desc Get ALL vetted Qs
 // @route GET /api/questions/vetted
 // @access Public
 const getVettedQuestions = asyncHandler(async (req, res) => {
-  if (!req.params.category) {
-    const questions = await Question.find({ vetted: true });
-    return res.status(200).json(questions);
-  }
+  const questions = await Question.find({ vetted: true });
+  return res.status(200).json(questions);
+});
+
+// @desc Get vetted  HTML Qs
+// @route GET /api/questions/vetted/html
+// @access Public
+const getVettedHTML = asyncHandler(async (req, res) => {
+  const questions = await Question.find({ vetted: true, category: "html" });
+  return res.status(200).json(questions);
+});
+
+// @desc Get vetted  CSS Qs
+// @route GET /api/questions/vetted/css
+// @access Public
+const getVettedCSS = asyncHandler(async (req, res) => {
+  const questions = await Question.find({ vetted: true, category: "css" });
+  return res.status(200).json(questions);
+});
+
+// @desc Get vetted  Javascript Qs
+// @route GET /api/questions/vetted/javascript
+// @access Public
+const getVettedJavascript = asyncHandler(async (req, res) => {
   const questions = await Question.find({
     vetted: true,
-    category: req.params.category,
+    category: "javascript",
   });
+  return res.status(200).json(questions);
+});
+
+// @desc Get vetted  Framwork Qs
+// @route GET /api/questions/vetted/framework
+// @access Public
+const getVettedFramework = asyncHandler(async (req, res) => {
+  const questions = await Question.find({
+    vetted: true,
+    category: "framework",
+  });
+  return res.status(200).json(questions);
+});
+
+// @desc Get vetted  Backend Qs
+// @route GET /api/questions/vetted/backend
+// @access Public
+const getVettedBackend = asyncHandler(async (req, res) => {
+  const questions = await Question.find({ vetted: true, category: "backend" });
+  return res.status(200).json(questions);
+});
+
+// @desc Get vetted  History Qs
+// @route GET /api/questions/vetted/history
+// @access Public
+const getVettedHistory = asyncHandler(async (req, res) => {
+  const questions = await Question.find({ vetted: true, category: "history" });
   return res.status(200).json(questions);
 });
 
@@ -133,4 +180,10 @@ module.exports = {
   getRankings,
   getStats,
   getVettedQuestions,
+  getVettedHTML,
+  getVettedCSS,
+  getVettedJavascript,
+  getVettedFramework,
+  getVettedBackend,
+  getVettedHistory,
 };

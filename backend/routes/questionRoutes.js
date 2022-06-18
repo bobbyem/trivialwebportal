@@ -10,6 +10,12 @@ const {
   getLatest,
   getStats,
   getVettedQuestions,
+  getVettedHTML,
+  getVettedCSS,
+  getVettedJavascript,
+  getVettedFramework,
+  getVettedBackend,
+  getVettedHistory,
 } = require("../controllers/questionController.js");
 
 //Basic CRUD
@@ -28,6 +34,19 @@ router.get("/top", getRankings);
 
 router.get("/stats", getStats);
 
-router.get("/vetted:category", getVettedQuestions);
+router.get("/vetted", getVettedQuestions);
+
+//Categories
+router.get("/vetted/html", getVettedHTML);
+
+router.get("/vetted/css", getVettedCSS);
+
+router.get("/vetted/javascript", getVettedJavascript);
+
+router.get("/vetted/framework", getVettedFramework);
+
+router.get("/vetted/backend", getVettedBackend);
+
+router.get("/vetted/history", getVettedHistory);
 
 module.exports = router;
