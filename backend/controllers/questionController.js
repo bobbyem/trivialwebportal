@@ -4,10 +4,16 @@ const Question = require("../models/questionModel");
 
 // @desc Get Qs
 // @route GET /api/questions
-// @access Private
+// @access Public
 const getQuestions = asyncHandler(async (req, res) => {
-  const questions = await Question.find();
-  res.status(200).json(questions);
+  if (!req) {
+    const questions = await Question.find();
+    res.status(200).json(questions);
+  }
+  if (req.vetted) {
+    const questions = await Question.find({ vetted: false });
+    res.status(200).json(questions);
+  }
 });
 
 // @desc Set Q
