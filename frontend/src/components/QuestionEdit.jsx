@@ -75,7 +75,7 @@ function QuestionEdit(props) {
           >
             <option value="html">HTML</option>
             <option value="css">CSS</option>
-            <option value="js">Javascript</option>
+            <option value="javascript">Javascript</option>
             <option value="framework">Framework</option>
             <option value="backend">Backend</option>
             <option value="history">History</option>
