@@ -9,6 +9,7 @@ function Stats() {
     if (!stats) {
       dispatch(getStats());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stats]);
 
   //Function to calculate percentage

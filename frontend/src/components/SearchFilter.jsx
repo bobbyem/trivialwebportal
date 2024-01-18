@@ -40,8 +40,8 @@ function SearchFilter() {
 
   return (
     <section className="search-filter">
-      <h1>Filter Questions</h1>
       <section className="form">
+        <h1>Filter Questions</h1>
         <div className="form-group">
           <label htmlFor="vetted">Vetted</label>
           <select

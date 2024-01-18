@@ -60,7 +60,7 @@ function Register() {
 
   return (
     <>
-      <section className="heading fade-in">
+      <section className="form fade-in">
         <h1>
           <FaUser />
         </h1>
@@ -111,7 +111,7 @@ function Register() {
             />
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-block">
+            <button type="submit" className="btn">
               Submit
             </button>
           </div>

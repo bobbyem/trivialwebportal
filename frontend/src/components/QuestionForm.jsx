@@ -61,8 +61,8 @@ function QuestionForm(props) {
 
   return (
     <>
-      <Stats />
       <section className="form">
+        <h1>Add a question</h1>
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <label htmlFor="category">Category</label>
@@ -124,7 +124,7 @@ function QuestionForm(props) {
             />
           </div>
           <div className="form-group">
-            <button className="btn btn-block">Add Question</button>
+            <button className="btn">Add Question</button>
           </div>
         </form>
       </section>

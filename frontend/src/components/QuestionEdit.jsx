@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaArrowLeft, FaCheck, FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import {
@@ -56,7 +56,7 @@ function QuestionEdit(props) {
     }
   }
   return (
-    <div className="loadingSpinnerContainer">
+    <div className="modal">
       <section className="form question-edit">
         <h1>Edit Question</h1>
         <p>{_id}</p>

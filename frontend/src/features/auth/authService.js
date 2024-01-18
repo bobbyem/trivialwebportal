@@ -15,8 +15,16 @@ const register = async (userData) => {
 
 //Login user
 const login = async (userData) => {
-  const response = await axios.post(API_URL + "login", userData);
-  return response.data;
+  try {
+    //Artificial delay for smoother ux
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    const response = await axios.post(API_URL + "login", userData);
+
+    return response.data;
+  } catch (e) {
+    console.log(e.message);
+  }
 };
 
 //Logout user

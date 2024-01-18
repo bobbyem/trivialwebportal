@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,7 +7,8 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Questions from "./pages/Questions";
 import Register from "./pages/Register";
-import { Wellcome } from "./pages/Wellcome";
+import { Welcome } from "./pages/Welcome";
+import Stats from "./components/Stats";
 
 function App() {
   return (
@@ -16,8 +16,9 @@ function App() {
       <Router>
         <div className="container">
           <Header />
+          <Stats />
           <Routes>
-            <Route path="/" element={<Wellcome />} />
+            <Route path="/" element={<Welcome />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
             <Route path="/contact" element={<Contact />} />

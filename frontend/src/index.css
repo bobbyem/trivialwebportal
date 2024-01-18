@@ -8,6 +8,7 @@
   --purple: #6a4c93;
   --green: #8ac926;
   --yellow: #f8ff13;
+  --dark: #0e0e13;
 }
 
 /* CSS HEX */
@@ -26,17 +27,21 @@
 body {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
-  background: no-repeat fixed
-    linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, #1982c4, #ffca3a);
+  background-color: var(--dark);
+  color: whitesmoke;
 }
 
 a {
   text-decoration: none;
-  color: #000;
+  color: whitesmoke;
 }
 
 p {
   line-height: 1.7;
+}
+
+h1 {
+  font-size: 1.5rem;
 }
 
 ul {
@@ -47,11 +52,8 @@ li {
   line-height: 2.2;
 }
 
-h1,
-h2,
-h3 {
-  font-weight: 600;
-  margin-bottom: 10px;
+input {
+  background-color: white;
 }
 
 .btn-row {
@@ -74,6 +76,7 @@ h3 {
   padding: 20px 0;
   border-bottom: 1px solid #e6e6e6;
   margin-bottom: 60px;
+  color: whitesmoke;
 }
 
 .header ul {
@@ -99,17 +102,6 @@ h3 {
   margin-right: 5px;
 }
 
-.heading {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 50px;
-  padding: 0 20px;
-}
-
-.heading p {
-  color: #828282;
-}
-
 .questions {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -122,6 +114,7 @@ h3 {
   padding: 20px 0 10px;
   position: relative;
   border-radius: 0.5rem;
+  color: black;
 }
 
 .question a {
@@ -140,7 +133,7 @@ h3 {
 
 .form,
 .content {
-  width: 70%;
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -201,33 +194,33 @@ h3 {
 }
 
 .btn:hover {
-  transform: scale(0.98);
+  filter: invert(10%);
+  transition: 0.5s;
 }
 
-.loadingSpinnerContainer {
+.modal {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(17, 138, 178, 0.749);
+  backdrop-filter: blur(2px);
   z-index: 5000;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.loadingSpinner {
-  width: 64px;
-  height: 64px;
-  border: 8px solid;
-  border-color: #000 transparent #555 transparent;
-  border-radius: 50%;
+.spinner {
+  width: 128px;
+  height: 128px;
   animation: spin 1.2s linear infinite;
 }
 
 .question-edit {
   background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
 }
 
 .btn-fa {
@@ -238,20 +231,22 @@ h3 {
   color: rgba(17, 138, 178, 0.749);
 }
 
-.wellcome {
-  background-color: white;
-  height: 50vh;
+.welcome {
+  background-color: var(--dark);
+  max-height: 900px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  border-radius: 0.5rem;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  padding-top: 2rem;
+  gap: 2rem;
 }
 
-.wellcome h1 {
+.welcome h1 {
   font-size: 3rem;
 }
 
-.wellcome img {
+.welcome img {
   width: 200px;
 }
 
@@ -269,6 +264,7 @@ h3 {
   justify-self: flex-end;
   background-color: var(--blue);
   color: white;
+  padding: 0.5rem;
 }
 
 .fade-in {
@@ -282,9 +278,13 @@ h3 {
   animation: backAndForth 1s infinite alternate-reverse;
 }
 
-.spin {
-  animation: spin 10s infinite;
+.spin-periodical {
+  animation: spinPeriodical 10s infinite;
   animation-delay: 1s;
+}
+
+.spin-linear {
+  animation: spinLinear 1s infinite linear;
 }
 
 .html {
@@ -302,6 +302,7 @@ h3 {
 
 .framework {
   background-color: var(--orange);
+  color: black;
 }
 
 .backend {
@@ -311,6 +312,7 @@ h3 {
 
 .history {
   background-color: var(--yellow);
+  color: black;
 }
 
 @keyframes spin {
@@ -377,7 +379,7 @@ h3 {
   }
 }
 
-@keyframes spin {
+@keyframes spinPeriodical {
   0% {
     transform: rotate(-360deg);
   }
@@ -389,5 +391,14 @@ h3 {
   }
   100% {
     transform: rotate(0deg);
+  }
+}
+
+@keyframes spinLinear {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

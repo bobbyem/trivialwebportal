@@ -1,7 +1,9 @@
+import Logo from "./Logo";
+
 function Spinner() {
   return (
-    <div className="loadingSpinnerContainer">
-      <div className="loadingSpinner"></div>
+    <div className="modal">
+      <Logo className="spin-linear spinner" />
     </div>
   );
 }

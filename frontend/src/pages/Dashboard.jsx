@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import QuestionForm from "../components/QuestionForm";
 import { getLatest } from "../features/questions/questionSlice";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,7 @@ function Dashboard() {
     if (!user) {
       navigate("/login");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <>{user ? <QuestionForm user={user} /> : null}</>;

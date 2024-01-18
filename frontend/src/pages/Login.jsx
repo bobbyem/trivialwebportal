@@ -54,36 +54,33 @@ function Login() {
 
   return (
     <>
-      <section className="heading fade-in">
-        <h1>
-          <FaSignInAlt />
-        </h1>
-        <p>Please Login</p>
+      <section className="form fade-in">
+        <h1>Login</h1>
         <form onSubmit={onSubmit}>
           <div className="form-group">
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
               name="email"
-              className="form-control"
               value={email}
               placeholder="Enter your email"
               onChange={onChange}
             />
           </div>
           <div className="form-group">
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
               name="password"
-              className="form-control"
               value={password}
               placeholder="Enter your password"
               onChange={onChange}
             />
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-block">
+            <button type="submit" className="btn">
               Submit
             </button>
           </div>

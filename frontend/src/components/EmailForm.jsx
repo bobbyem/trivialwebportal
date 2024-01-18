@@ -84,8 +84,8 @@ function EmailForm() {
 
   return (
     <section className="form">
+      <h1>Contact</h1>
       <form onSubmit={onSubmit}>
-        <h1>Contact</h1>
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
