@@ -1,7 +1,7 @@
 {
   "name": "trivial-web-backend",
   "version": "1.0.0",
-  "description": "API and Webportal for Trivial-Web",
+  "description": "API and Webportal for Trivial Roulette",
   "main": "index.js",
   "scripts": {
     "start": "node backend/server.js",
@@ -15,18 +15,18 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.0",
+    "body-parser": "^1.20.2",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.0",
+    "dotenv": "^16.3.1",
     "esm": "^3.2.25",
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.3.3",
-    "node-fetch": "^3.2.4",
-    "nodemon": "^2.0.16",
-    "concurrently": "^7.1.0"
+    "mongoose": "^6.12.5",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^2.0.22",
+    "concurrently": "^7.6.0"
   },
   "devDependencies": {}
 }
