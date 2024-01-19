@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import QuestionItem from "../components/QuestionItem";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
 import { getQuestions, reset } from "../features/questions/questionSlice";

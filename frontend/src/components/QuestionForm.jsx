@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { createQuestion } from "../features/questions/questionSlice";
-import Stats from "./Stats";
 
 function QuestionForm(props) {
   const dispatch = useDispatch();

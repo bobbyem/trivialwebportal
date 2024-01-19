@@ -36,6 +36,7 @@ function SearchFilter() {
     }
     //Set result in global state
     dispatch(setFiltered(result));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questions, sorting, filter]);
 
   return (

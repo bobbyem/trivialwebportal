@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import QuestionForm from "../components/QuestionForm";
-import { getLatest } from "../features/questions/questionSlice";
 import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
