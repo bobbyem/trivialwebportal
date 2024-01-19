@@ -9,9 +9,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout, reset } from "../features/auth/authSlice";
-import Logo from "./Logo";
 
-function Header() {
+function Nav() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -24,8 +23,16 @@ function Header() {
 
   return (
     <header className="header">
-      <div className="logo">
-        <Link to="/">Trivial Roulette - Question Portal</Link>
+      <div className="flex align-center gap-1">
+        <Link to="/">Home</Link>
+        <p>||</p>
+        <a
+          href="https://trival-roulette.web.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Trivial Roulette
+        </a>
       </div>
       <ul>
         <li>
@@ -72,4 +79,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Nav;
